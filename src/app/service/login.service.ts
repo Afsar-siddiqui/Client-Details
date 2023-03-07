@@ -1,6 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +17,8 @@ export class LoginService {
 
   loginAPI(data: any){
     console.log(data);
-    return this.http.post(`https://dummyjson.com/auth/login/${data.username}${data.passwordpassword}`, {});
+    //username: 'kminchelle', password: '0lelplR', for login
+    return this.http.post(`https://dummyjson.com/auth/login`, { username: data.username, password: data.password}, httpOptions);
   }
 
 }

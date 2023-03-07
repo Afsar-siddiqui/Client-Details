@@ -10,8 +10,15 @@ export class DashboardComponent {
 
   constructor(private router: Router){}
 
+  ngOnInit(){
+    if(sessionStorage.getItem('userId') === null){
+      this.router.navigate(['/'])
+    }
+  }
+
   logout(){
-    //this.router.navigate['login']
+    this.router.navigate(['/'])
+
   }
 
 }
